@@ -1,12 +1,12 @@
 function Item({ name, importance }) {
   return (
     <li className="item">
-      {name} - 중요도 : {importance}
+      {name} - {importance !==0 && `중요도: ${importance}`}
     </li>
   );
 }
 
-function PackingList() {
+export default function PackingList() {
   return (
     <section>
       <h1>홍길동의 포장목록</h1>

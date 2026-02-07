@@ -1,12 +1,17 @@
+import { useState } from 'react';
+
 function ColorSwitch({onChangeColor}) {
   return (
-    <button>
+    <button onClick={(e) => {
+      e.stopPropagation();
+      onChangeColor();
+    }}>
       배경색 변경
     </button>
   );
 }
 
-function ChangeColor() {
+export default function ChangeColor() {
   const [clicks, setClicks] = useState(0);
 
   function handleClickOutside() {
@@ -33,4 +38,4 @@ function ChangeColor() {
       <h2>Clicks on the page: {clicks}</h2>
     </div>
   );
-}
+} 

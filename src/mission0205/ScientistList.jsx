@@ -27,15 +27,18 @@ const people = [
   }
 ];
 
-function ScientistList() {
-  const listItems = people.map(person =>
-    <li key={person.id}>
-      <p>
-        <b>{person.name} : </b>
-        [{person.accomplishment}]으로 알려진 {' ' + person.profession + ' '}
-      </p>
-    </li>
-  );
+export default function ScientistList() {
+  const listItems = [];
+  
+  for (let i = 0; i <= people.length ; i++) {
+    const person = people[i];
+    listItems.push(
+      <li key = {person.id}>
+        <b>{ person.name } </b>: { person.profession }
+      </li>
+    )
+  }
+
   return (
     <article>
       <h1>과학자</h1>

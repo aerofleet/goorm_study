@@ -1,12 +1,12 @@
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} - '[포장됨]'
+      {name} - {isPacked ? '[포장됨]' : '[포장안됨]'}
     </li>
   );
 }
 
-function PackingList() {
+export default function PackingList() {
   return (
     <section>
       <h1>홍길동의 포장목록</h1>

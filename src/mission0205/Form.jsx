@@ -1,12 +1,15 @@
-function Form() {
-  let name = '';
+import { useState } from 'react';
+
+export default function Form() {
+  
+  const [name, setName] = useState('');
 
   function handleNameChange(e) {
-    name = e.target.value;
+    setName(e.target.value);
   }
 
   function handleReset() {
-    name = '';
+    setName('');
   }
 
   return (
@@ -16,7 +19,7 @@ function Form() {
         value={name}
         onChange={handleNameChange}
       />
-      <h1>{name}님 안녕하세요.</h1>
+      <h1>{name ? `${name}님 안녕하세요.` : '이름을 입력해주세요.'}</h1>
       <button onClick={handleReset}>Reset</button>
     </form>
   );
