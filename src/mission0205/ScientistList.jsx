@@ -28,21 +28,34 @@ const people = [
 ];
 
 export default function ScientistList() {
-  const listItems = [];
+  const chemists = [];
+  const scientists = [];
   
-  for (let i = 0; i <= people.length ; i++) {
+  for (let i = 0; i < people.length ; i++) {
     const person = people[i];
-    listItems.push(
+    const personTag = (
       <li key = {person.id}>
-        <b>{ person.name } </b>: { person.profession }
+        <p>
+        <b>{person.name} : </b>
+        [{person.accomplishment}]으로 알려진 {' ' + person.profession + ' '}
+      </p>
       </li>
-    )
-  }
+    );
+
+    if (person.profession === '화학자') {
+      chemists.push(personTag);      
+    } else {
+      scientists.push(personTag);
+    }
+  }   
 
   return (
     <article>
       <h1>과학자</h1>
-      <ul>{listItems}</ul>
+      <h3>화학자 명단</h3>
+      <ul>{chemists}</ul>
+      <h3>기타 과학자</h3>
+      <ul>{scientists}</ul>      
     </article>
   );
 }

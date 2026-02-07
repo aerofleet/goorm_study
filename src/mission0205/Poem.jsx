@@ -6,15 +6,15 @@ const poem = {
   ]
 };
 
-function Poem() {
+export default function Poem() {
   return (
-    <article>
-      {poem.lines.map((line, index) =>
-        <p key={index}>
-          {line}
-          <hr></hr>
-        </p>
-      )}
+    <article style={{ textAlign: 'center', padding: '20px' }}>
+      {poem.lines.map((line, index) => (
+        <div key={index}>
+          <p>{line}</p>
+          {index === 1 && <hr />}     
+        </div>         
+      ))}
     </article>
   );
-}1
+}
