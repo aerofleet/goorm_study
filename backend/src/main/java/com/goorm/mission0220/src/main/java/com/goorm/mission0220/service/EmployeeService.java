@@ -3,6 +3,7 @@ package com.goorm.mission0220.service;
 import java.util.Objects;
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import com.goorm.mission0220.domain.Department;
 import com.goorm.mission0220.domain.Employee;
 import com.goorm.mission0220.repository.DepartmentRepository;
 import com.goorm.mission0220.repository.EmployeeRepository;
+import com.goorm.mission0220.repository.EmployeeSpecification;
 
 import lombok.RequiredArgsConstructor;
 
@@ -83,4 +85,34 @@ public class EmployeeService {
                         + " / " + (e.getDepartment() != null ? e.getDepartment().getDptName() : "-")
                         + " / " + (e.getDepartment() != null ? e.getDepartment().getDptLoc() : "-")));
     }
+
+    /**
+     * 키워드로 name(작성자), memo(내용), dptLoc(제목)을 검색하여 급여 내림차순으로 출력
+     */
+    public void printEmployeesByKeyword(String keyword) {
+        System.out.println("=== 키워드 검색 결과 ('" + keyword + "') ===");
+        
+        List<Employee> results = employeeRepository.findAll(
+            EmployeeSpecification.searchByKeyword(keyword),
+            Sort.by(Sort.Direction.DESC, "salary")
+        );
+        
+        if (results.isEmpty()) {
+            System.out.println("검색 결과가 없습니다.");
+            return;
+        }
+        
+        results.forEach(e -> {
+            System.out.println("ID: " + e.getId()
+                    + ", 이름: " + e.getName()
+                    + ", 급여: " + e.getSalary()
+                    + ", 부서: " + (e.getDepartment() != null ? e.getDepartment().getDptName() : "-")
+                    + ", 위치: " + (e.getDepartment() != null ? e.getDepartment().getDptLoc() : "-")
+                    + ", 메모: " + (e.getMemo() != null && !e.getMemo().isEmpty() ? e.getMemo() : "-"));
+        });
+        
+        System.out.println("총 " + results.size() + "건의 결과가 검색되었습니다.");
+    }
+
+
 }
