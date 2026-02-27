@@ -11,5 +11,4 @@ public class Mission0220Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Mission0220Application.class, args);
 	}
-
 }

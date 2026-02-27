@@ -29,10 +29,9 @@ public class JobDataRunner implements CommandLineRunner {
                     Long salary = Long.parseLong(readRequired(reader, "급여를 입력하세요(숫자): "));
                     String deptName = readRequired(reader, "부서명을 입력하세요: ");
                     String deptLoc = readRequired(reader, "부서 위치를 입력하세요: ");
+                    String memo = readRequired(reader, "메모를 입력하세요 (선택): ", true);
 
-                    var dept = employeeService.getOrCreateDepartment(deptName, deptLoc);
-                    employeeService.addEmployee(name, salary, dept.getDptId());
-
+                    employeeService.addEmployee(name, salary, employeeService.getOrCreateDepartment(deptName, deptLoc).getDptId(), memo);
                     anyInserted = true;
                     lastName = name;
                     keepGoing = askContinue(reader);

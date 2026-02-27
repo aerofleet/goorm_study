@@ -29,7 +29,7 @@ public class Employee {
     @Column(nullable = false)
     private String name;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private Long salary;
 
     @CreatedDate
@@ -40,10 +40,14 @@ public class Employee {
     @JoinColumn(name = "dpt_id")
     private Department department;
 
+    @Column(length = 500)
+    private String memo;
+
     @Builder
-    public Employee(String name, Long salary, Department department) {
+    public Employee(String name, Long salary, Department department, String memo) {
         this.name = name;
         this.salary = salary;
         this.department = department;
+        this.memo = memo;
     }
 }
