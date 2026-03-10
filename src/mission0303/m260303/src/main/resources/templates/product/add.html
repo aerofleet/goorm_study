@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Product Add</title>
+</head>
+<body>
+	<h1>상품 추가</h1>
+	<p>메니저와 어드민용</p>
+
+	<form>
+		<label for="name">Item Name</label>
+		<input id="name" name="name" type="text" required>
+
+		<label for="price">Price</label>
+		<input id="price" name="price" type="number" step="0.01" required>
+
+		<label for="desc">Description</label>
+		<textarea id="desc" name="desc" rows="4"></textarea>
+
+		<button type="submit">Save</button>
+	</form>
+
+	<a th:href="@{/}">홈</a>
+</body>
+</html>

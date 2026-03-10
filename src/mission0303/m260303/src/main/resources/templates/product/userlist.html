@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User List</title>
+</head>
+<body>
+	<h1유저 목록</h1>
+	<p>어드민 관리자만 접근 가능합니다</p>
+
+	<ul>
+		<li>유저 (ROLE_USER)</li>
+		<li>메니저 (ROLE_MANAGER)</li>
+		<li>어드민 (ROLE_ADMIN)</li>
+	</ul>
+
+	<a th:href="@{/}">홈</a>
+</body>
+</html>
